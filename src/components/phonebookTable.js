@@ -8,6 +8,8 @@ import { useDisclosure } from "@chakra-ui/react";
 import UpdateContact from "./updateContact";
 import { useState } from "react";
 
+import { Navigate } from "react-router-dom";
+
 import Avatar from "react-avatar";
 
 
@@ -15,6 +17,15 @@ function PhonebookTable({filterLabel}) {
 
     let data = useSelector((state) => state.phonebook.contacts);
 
+    function addToLS(elem){
+        localStorage.setItem("profile", JSON.stringify(elem));
+        return (
+            <Navigate to="/profile" replace={true} />
+        );
+        window.location.href = "./profile"
+    }
+
+    console.log(data);
     if (filterLabel!=""){
         // filter exists
         data = data.filter(elem=>elem.label==filterLabel)
@@ -78,7 +89,7 @@ function PhonebookTable({filterLabel}) {
                             if (!elem) return;
 
                             return (
-                                <Tr>
+                                <Tr onClick={()=>addToLS(elem)}>
                                     <Td>{elem.name} <Avatar src={elem.avatar} name={elem.name} size={40} round={true} /></Td>
                                     <Td>
                                         <ContactItem>
@@ -108,7 +119,7 @@ function PhonebookTable({filterLabel}) {
 
 
                                 return (
-                                    <Tr>
+                                    <Tr onClick={()=>addToLS(elem)}>
                                         <Td><Avatar src={elem.avatar} name={elem.name} size={40} round={true} />&nbsp;&nbsp;{elem.name}</Td>
                                         <Td>
                                             <ContactItem>
