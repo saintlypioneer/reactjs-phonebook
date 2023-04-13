@@ -85,7 +85,40 @@ const AddContact = () => {
 
 const Container = styled.div`
     width: 100%;
-    background-color: red;
+    padding: 10px;
+    border-radius: 8px;
+
+    &>.add-contact{
+        width: 100%;
+
+        h2{
+            font-size: 1.2rem;
+            font-weight:600;
+        }
+
+        form{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+
+            input, select{
+                padding: 5px 10px;
+            }
+
+            button{
+                padding: 5px 10px;
+                background-color: black;
+                color: white;
+                transition: 0.2s all;
+                border: none;
+
+                &:hover{
+                    background-color: white;
+                    color: black;
+                }
+            }
+        }
+    }
 `;
 
 export default AddContact;
