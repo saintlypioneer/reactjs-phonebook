@@ -8,9 +8,16 @@ import { useDisclosure } from "@chakra-ui/react";
 import UpdateContact from "./updateContact";
 import { useState } from "react";
 
-function PhonebookTable(props) {
 
-    const data = useSelector((state) => state.phonebook.contacts);
+function PhonebookTable({filterLabel}) {
+
+    let data = useSelector((state) => state.phonebook.contacts);
+
+    if (filterLabel!=""){
+        // filter exists
+        data = data.filter(elem=>elem.label==filterLabel)
+    }
+
     const bookmarked = useSelector((state) => state.phonebook.bookmarks);
     console.log(bookmarked);
 
