@@ -8,6 +8,8 @@ import { useDisclosure } from "@chakra-ui/react";
 import UpdateContact from "./updateContact";
 import { useState } from "react";
 
+import Avatar from "react-avatar";
+
 
 function PhonebookTable({filterLabel}) {
 
@@ -77,7 +79,7 @@ function PhonebookTable({filterLabel}) {
 
                             return (
                                 <Tr>
-                                    <Td>{elem.name}</Td>
+                                    <Td>{elem.name} <Avatar src={elem.avatar} name={elem.name} size={40} round={true} /></Td>
                                     <Td>
                                         <ContactItem>
                                             <span>{elem.phoneNumber}</span>
@@ -107,7 +109,7 @@ function PhonebookTable({filterLabel}) {
 
                                 return (
                                     <Tr>
-                                        <Td>{elem.name}</Td>
+                                        <Td><Avatar src={elem.avatar} name={elem.name} size={40} round={true} />&nbsp;&nbsp;{elem.name}</Td>
                                         <Td>
                                             <ContactItem>
                                                 <span>{elem.phoneNumber}</span>
